@@ -1,0 +1,15 @@
+apply plugin: 'java'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.projectlombok:lombok:1.12.2'
+    compile 'org.apache.commons:commons-lang3:3.1'
+    testCompile 'junit:junit-dep:4.+'
+    testCompile 'org.hamcrest:hamcrest-core:1.+'
+    testCompile 'org.mockito:mockito-core:1.9.+'
+    testCompile 'org.easytesting:fest-assert:1.4'
+    testCompile 'com.google.guava:guava:18.+'
+}
