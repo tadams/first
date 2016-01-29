@@ -2,11 +2,12 @@ package com.tom.fowler;
 
 import org.junit.Test;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
-import static java.util.Comparator.comparing;
 import static java.util.stream.Collectors.*;
-import static org.fest.assertions.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class Example3 {
 

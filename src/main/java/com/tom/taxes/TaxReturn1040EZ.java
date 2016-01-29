@@ -1,8 +1,10 @@
 package com.tom.taxes;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Function;
 
 import static java.util.stream.Collectors.toList;
 
@@ -24,16 +26,21 @@ public class TaxReturn1040EZ {
 
     }
 
-    private List<FormW2> getForm() {
-        return findForm(FormType.FORM_W2);
+    protected BigDecimal totalCompensation() {
+        return getW2Forms().stream()
+                           .map(FormW2::getCompensation)
+                           .reduce(BigDecimal.ZERO,
+                                  (a,b) -> a.add(b));
     }
 
-    private <T> List<T> findForm(FormType formType) {
+    private List<FormW2> getW2Forms() {
+        return findForm(FormType.FORM_W2, FormW2.class::cast);
+    }
 
-        Class clazz = formType.getFormClass();
+    private <R> List<R> findForm(FormType formType, Function<Form, R> mapper) {
         return forms.stream()
                     .filter(form -> form.getFormType() == formType)
-                    .map(form -> (T) clazz.cast(form))
+                    .map(mapper::apply)
                     .collect(toList());
     }
 

@@ -2,13 +2,9 @@ package com.tom.fowler;
 
 import org.junit.Test;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.Set;
 
-import static java.util.Comparator.comparing;
-import static java.util.stream.Collectors.toList;
-import static org.fest.assertions.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class Example2 {
 
